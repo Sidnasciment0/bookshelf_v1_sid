@@ -1,1 +1,29 @@
-<p>Classes Componente</p>
+<table mat-table [dataSource]="livrosGeneros" class="mat-elevation-z8">
+
+  <!-- ID do Gênero -->
+  <ng-container matColumnDef="_idGenero">
+    <th mat-header-cell *matHeaderCellDef> Código CDD </th>
+    <td mat-cell *matCellDef="let generos"> {{generos._idGenero}} </td>
+  </ng-container>
+
+  <!-- Name do Gênero -->
+  <ng-container matColumnDef="nomeGenero">
+    <th mat-header-cell *matHeaderCellDef> Nome do Gênero </th>
+    <td mat-cell *matCellDef="let generos"> {{generos.nomeGenero}} </td>
+  </ng-container>
+
+  <!-- Decimal do Gênero -->
+  <ng-container matColumnDef="decimalGenero">
+    <th mat-header-cell *matHeaderCellDef> Fator Decimal </th>
+    <td mat-cell *matCellDef="let generos"> {{generos.decimalGenero}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="visaoColunas"></tr>
+  <tr mat-row *matRowDef="let row; columns: visaoColunas;"></tr>
+</table>
