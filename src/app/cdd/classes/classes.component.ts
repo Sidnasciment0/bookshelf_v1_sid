@@ -1,5 +1,6 @@
-import { Generos } from './../modelos/generos';
 import { Component, OnInit } from '@angular/core';
+
+import { Generos } from './../modelos/generos';
 
 @Component({
   selector: 'app-classes',
@@ -9,18 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ClassesComponent implements OnInit {
 
   // Vetor Inicializado
-  livrosGeneros: Generos[] = [
-    { _idGenero: "0", nomeGenero: "Generalidade", decimalGenero: "00", livros: 523 },
-    { _idGenero: "1", nomeGenero: "Filosofia e Psicologia", decimalGenero: "00", livros: 125 },
-    { _idGenero: "2", nomeGenero: "Religião", decimalGenero: "00", livros: 65 },
-    { _idGenero: "3", nomeGenero: "Ciências Sociais", decimalGenero: "00", livros: 203 },
-    { _idGenero: "4", nomeGenero: "Línguas", decimalGenero: "00", livros: 123 },
-    { _idGenero: "5", nomeGenero: "Ciências Naturais e Matemática", decimalGenero: "00", livros: 235 },
-    { _idGenero: "6", nomeGenero: "Tecnologias e Ciências Aplicadas", decimalGenero: "00", livros: 352 },
-    { _idGenero: "7", nomeGenero: "Artes", decimalGenero: "00", livros: 423 },
-    { _idGenero: "8", nomeGenero: "LIteratura e Retórica", decimalGenero: "00", livros: 321 },
-    { _idGenero: "9", nomeGenero: "Geografia, Histório e Biografia", decimalGenero: "00", livros: 987 },
-  ];
+  livrosGeneros: Generos[] = [];
   visaoColunas = ["_idGenero", "nomeGenero", "decimalGenero"]
 
   constructor() {
@@ -28,5 +18,4 @@ export class ClassesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
