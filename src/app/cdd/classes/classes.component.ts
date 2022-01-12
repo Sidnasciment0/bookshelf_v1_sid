@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Generos } from './../modelos/generos';
+import { GenerosService } from './../service/generos.service';
 
 @Component({
   selector: 'app-classes',
@@ -10,10 +12,11 @@ import { Generos } from './../modelos/generos';
 export class ClassesComponent implements OnInit {
 
   // Vetor Inicializado
-  livrosGeneros: Generos[] = [];
+  livrosGeneros: Observable <Generos[]>;
   visaoColunas = ["_idGenero", "nomeGenero", "decimalGenero"]
 
-  constructor() {
+  constructor(private generosService: GenerosService) {
+    this.livrosGeneros = generosService.listagemGeneros();
   }
 
   ngOnInit(): void {
