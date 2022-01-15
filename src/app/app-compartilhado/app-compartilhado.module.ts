@@ -5,12 +5,10 @@ import { AppDialogosComponent } from './app-dialogos/app-dialogos.component';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { PipesPipe } from './app-pipes/pipes.pipe';
 
-;
-
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppDialogosComponent,
     PipesPipe,
    ],
