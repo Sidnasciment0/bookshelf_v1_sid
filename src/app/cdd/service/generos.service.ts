@@ -18,7 +18,7 @@ export class GenerosService {
     .pipe(
       delay(500),
       first(),
-      tap(apiGeneros => console.log(apiGeneros)),
+      tap(apiGeneros => apiGeneros),
     )
   }
 }

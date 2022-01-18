@@ -51,8 +51,8 @@ export class FeedComponent {
         },
         {
           title: 'Dica de Leitores',
-          cols: 1,
           img: '../../assets/imagens/2.png',
+          cols: 1,
           rows: 1,
         },
         {
