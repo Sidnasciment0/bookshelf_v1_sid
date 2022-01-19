@@ -4,9 +4,6 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>{{tituloNav}}</mat-toolbar>
-    <p>
-      <mat-icon aria-hidden="false" aria-label="Ícone do Usuário">{{usuario.icone}}</mat-icon>{{usuario.userName}}
-    </p>
     <mat-nav-list *ngFor="let itemMenu of itensMenu$ | async, index as i">
       <a mat-list-item *ngIf="itemMenu.hab === true"
       [href]="itemMenu.linkMenu">{{itemMenu.labelMenu}}</a>
@@ -14,16 +11,14 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img mat-card-sm-image [width]="larIcone" [height]="altIcone" [src]="iconeGeral">
-      <span>{{tituloBarra}}</span>
+      <button color="primary" mat-raised-button>
+        <mat-icon class="mat-18">login</mat-icon>
+        Login
+      </button>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

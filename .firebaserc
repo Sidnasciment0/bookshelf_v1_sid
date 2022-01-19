@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bookshelf-3dd38": {
+      "hosting": {
+        "bookshelf_v1_sid": [
+          "bookshelf-3dd38"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bookshelf-3dd38"
+  }
+}

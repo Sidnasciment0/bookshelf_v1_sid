@@ -14,17 +14,16 @@ import { NavegacaoService } from './../servicosInterface/navegacao.service';
 export class NavegacaoComponent {
   // Itens do Menu Principal
   tituloNav = 'BookShelf v1';
-  usuario = { userName: 'Sid Nascimento', icone: 'remember_me' };
+  // usuario = { userName: 'Sid Nascimento', icone: 'remember_me' };
   // Itens da Barra Superior
-  tituloBarra = '[Sua Estante Virtual ]';
+  // tituloBarra = '[Sua Estante Virtual ]';
   // Itens de Ícones e Imagens de Nav
   iconeGeral = '../../assets/imagens/ShelfBook.png';
   larIcone = 80;
   altIcone = 80;
   // Controle das Rotas do Menu.
   itensMenu$: Observable <MenuNavegador[]>;
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
       shareReplay()

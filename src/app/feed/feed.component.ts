@@ -1,6 +1,10 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
+import { catchError, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Dashboard } from './../modelosInterface/dashboard';
+import { DashboardService } from './../servicosInterface/dashboard.service';
 
 @Component({
   selector: 'app-feed',
@@ -8,68 +12,28 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./feed.component.scss'],
 })
 export class FeedComponent {
+  cards$: Observable<Dashboard[]>;
   usuario = { userName: 'Sid Nascimento', icone: 'remember_me' };
 
   /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe( // Depois migrar essa variável para breakpoints.
     map(({ matches }) => {
       if (matches) {
-        return [
-          {
-            title: 'O melhor Livro de Janeiro',
-            img: '../../assets/imagens/1.png',
-            cols: 1,
-            rows: 1,
-          },
-          {
-            title: 'Dica de Leitores',
-            cols: 1,
-            img: '../../assets/imagens/2.png',
-            rows: 1,
-          },
-          {
-            title: 'O mais comentado da seamana',
-            img: '../../assets/imagens/3.png',
-            cols: 1,
-            rows: 1,
-          },
-          {
-            title: 'Indicação do Time BookShelf',
-            img: '../../assets/imagens/4.png',
-            cols: 1,
-            rows: 1,
-          },
-        ];
+        return this.cards$
       }
 
-      return [
-        {
-          title: 'O melhor Livro de Janeiro',
-          img: '../../assets/imagens/1.png',
-          cols: 2,
-          rows: 1,
-        },
-        {
-          title: 'Dica de Leitores',
-          img: '../../assets/imagens/2.png',
-          cols: 1,
-          rows: 1,
-        },
-        {
-          title: 'O mais comentado da seamana',
-          img: '../../assets/imagens/3.png',
-          cols: 1,
-          rows: 2,
-        },
-        {
-          title: 'Indicação do Time BookShelf',
-          img: '../../assets/imagens/4.png',
-          cols: 1,
-          rows: 1,
-        },
-      ];
+      return this.cards$
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private breakpointObserver: BreakpointObserver,
+    private dashboardService: DashboardService,
+  ) {
+    this.cards$ = dashboardService.listagemCards()
+    .pipe(
+      catchError(error => {
+        return of([])
+      })
+    )
+  };
 }

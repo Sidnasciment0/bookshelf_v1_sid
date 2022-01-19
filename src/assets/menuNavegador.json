@@ -12,7 +12,7 @@
   {
     "linkMenu": "/clube",
     "labelMenu": "Página Usuário",
-    "hab": true
+    "hab": false
   },
   {
     "linkMenu": "leitura",
