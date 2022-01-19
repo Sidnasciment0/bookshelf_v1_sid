@@ -31,9 +31,9 @@ export class ClassesComponent implements OnInit {
   }
 
   abrirDialogoErro(erroMsg: string) {
-    this.dialogo.open(AppDialogosComponent), {
+    this.dialogo.open(AppDialogosComponent, {
       data:erroMsg
-    }
+    })
   }
 
   ngOnInit(): void {

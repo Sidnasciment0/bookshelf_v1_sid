@@ -1,9 +1,11 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { MenuNavegador } from '../modelosInterface/menuNavegador';
+import { AppLoginComponent } from './../app-login/app-login.component';
 import { NavegacaoService } from './../servicosInterface/navegacao.service';
 
 @Component({
@@ -31,6 +33,7 @@ export class NavegacaoComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
+    private telaLogin: MatDialog,
     private navegadorService: NavegacaoService,
   ) {
     this.itensMenu$ = navegadorService.listagemMenu()
@@ -40,4 +43,10 @@ export class NavegacaoComponent {
       })
     )
    };
+
+   abrirLogin(erroMsg: string) {
+    this.telaLogin.open(AppLoginComponent, {
+      data:erroMsg
+    });
+   }
 }
