@@ -1,9 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>{{tituloNav}}</mat-toolbar>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="(isHandset$ | async) === false">
+    <img mat-card-image [src]="logoMenu" alt="Logo Alto do Menu">
     <mat-nav-list *ngFor="let itemMenu of itensMenu$ | async, index as i">
       <a mat-list-item *ngIf="itemMenu.hab === true"
       [href]="itemMenu.linkMenu">{{itemMenu.labelMenu}}</a>
@@ -15,11 +13,23 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <img mat-card-sm-image [width]="larIcone" [height]="altIcone" [src]="iconeGeral">
-      <button mat-raised-button color="primary" (click)="abrirLogin('Tela de Login')">
-        <mat-icon class="mat-18">login</mat-icon>
-        Login
-      </button>
+      <ng-container *ngIf="usuario$ | async as usuario; else botaoLogin">
+        <button mat-raised-button color="primary" [matMenuTriggerFor]="usuarioMenu">
+          <mat-icon class="mat-18">local_library</mat-icon>
+          {{usuario.displayName}}
+          <mat-icon>expand_more</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #botaoLogin>
+        <button mat-raised-button color="primary" (click)="abrirLogin('Tela de Login')">
+          <mat-icon class="mat-18">login</mat-icon>
+          LOGIN
+        </button>
+      </ng-template>
     </mat-toolbar>
+    <mat-menu #usuarioMenu="matMenu">
+      <button mat-menu-item (click)="sairUsuario()">LOGOUT</button>
+    </mat-menu>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
