@@ -17,7 +17,7 @@
         <mat-error *ngIf="senha?.errors?.['required']">Esqueceu a senha</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Confirme a senha anterior" formControlName="confimarSenha" type="password">
+        <input matInput placeholder="Confirme a senha anterior" formControlName="confirmaSenha" type="password">
         <mat-error *ngIf="senha?.errors?.['required']">Entre com a senha confirmada</mat-error>
         <mat-error *ngIf="formularioCadastro.errors?.['senhaConfirmada']">Entre com a senha confirmada</mat-error>
       </mat-form-field>
