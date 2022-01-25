@@ -75,7 +75,7 @@ export class AppCadastroComponent implements OnInit {
     });
   }
 
+  // Migrar erros de Firebase para português com #BS referencial.
   ngOnInit(): void {
   }
-
 }
